@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 //package combinationLock;
 
 /** 
@@ -15,6 +17,8 @@ public class Server {
     private boolean xx, yy, zz;                    // track if inputted passcode matches x, y, and z 
     private int currentPos = 0;                    // current position of dial 
     private int status = 0;                        // checks lock's open/close status
+    Scanner scan = new Scanner(System.in);
+    
     
     
     // CONSTRUCTOR METHODS *****************************************************
@@ -41,9 +45,14 @@ public class Server {
      * creates a default combination lock with passcode 0,0,0
      */
     public Server(){
-        x = 0;
-        y = 0;
-        z = 0;
+    	System.out.println("Please set your Lock combination.  Enter 3 numbers, separated by spaces: ");
+    	int [] lockCombination = new int[3];
+    	for (int i = 0; i < 3; i++){
+    		lockCombination[i] = scan.nextInt();
+    	}
+        x = lockCombination[0];
+        y = lockCombination[1];
+        z = lockCombination[2];
         // colored output displaying lock combination.  MAY NOT BE PORTABLE
         //System.out.printf((char)27 + "[46mLock combination set to: %d, %d, %d\n" + (char)27 + "[0m", x, y, z );
         // output displaying lock combination

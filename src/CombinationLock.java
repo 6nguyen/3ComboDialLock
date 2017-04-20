@@ -14,7 +14,7 @@ public class CombinationLock {
      */
     public static void main(String[] args) {
         // setting up first lock and checking current position
-        Server combo1 = new Server(24, 5, 32);
+        Server combo1 = new Server();
         combo1.pos0();
         combo1.getPos();
         
