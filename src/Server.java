@@ -155,6 +155,25 @@ public class Server {
         else xx = false;
     }
     
+    /**
+     * firstTry method prompts user for input
+     */
+    public void firstTry(){
+    	System.out.println("Please enter the direction you would like to turn the dial.\n" 
+    					+ "(clockwise/counterclockwise) => (c/cc)");
+    	String direction = scan.nextLine();
+    	while (!direction.equals("c") || !direction.equals("c")){
+    		System.out.println("Invalid entry.  Which direction would you like to turn the dial?\n" 
+    					+ "(clockwise/counterclockwise) => (c/cc)");
+    		direction = scan.nextLine();
+    	}
+    	System.out.println("Please enter the number of ticks you want to spin the dial.");
+    	int ticks = scan.nextInt();
+    	if (direction == "c") {turnClockwise(ticks);}
+    	else if (direction == "cc") {turnCounter(ticks);}
+    	else ;
+    }
+    
     
     /**
      * enter second passcode for lock
