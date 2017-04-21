@@ -21,7 +21,8 @@ public class CombinationLock {
         // entering combination and then checking current position
         //combo1.firstTry("clockwise", 64);
         combo1.firstTry();
-        combo1.secondTry("counter", 59);
+        //combo1.secondTry("counter", 59);
+        combo1.secondTry();
         combo1.thirdTry("clockwise", 27);
         combo1.pos0();
         combo1.getPos();

@@ -1,3 +1,4 @@
+import java.util.Objects;
 import java.util.Scanner;
 
 //package combinationLock;
@@ -159,19 +160,24 @@ public class Server {
      * firstTry method prompts user for input
      */
     public void firstTry(){
-    	System.out.println("Please enter the direction you would like to turn the dial.\n" 
-    					+ "(clockwise/counterclockwise) => (c/cc)");
-    	String direction = scan.nextLine();
-    	
-    	while (!direction.equals("c") || !direction.equals("c")){
+    	String direction;
+    	String clockwise = new String("c");
+    	String counterClockwise = new String("cc");
+		direction = scan.nextLine().toLowerCase();
+		System.out.println("Please enter the direction you would like to turn the dial.\n" 
+				+ "(clockwise = c/counterclockwise = cc)\n");
+		
+    	while (!direction.equals(clockwise) || !direction.equals(counterClockwise)) {
+    		direction = scan.nextLine().toLowerCase();
     		System.out.println("Invalid entry.  Which direction would you like to turn the dial?\n" 
-    					+ "(clockwise/counterclockwise) => (c/cc)");
-    		direction = scan.nextLine();
+    					+ "(clockwise = c/counterclockwise = cc)\n");
     	}
+    	
+    	
     	System.out.println("Please enter the number of ticks you want to spin the dial.");
     	int ticks = scan.nextInt();
     	
-    	if (direction == "c") {turnClockwise(ticks);}
+    	if (direction.equals("c")) {turnClockwise(ticks);}
     	else {turnCounter(ticks);}
 
         if (fullRevolution(ticks) && currentPos == x){
@@ -203,7 +209,7 @@ public class Server {
 				+ "(clockwise/counterclockwise) => (c/cc)");
 		String direction = scan.nextLine();
 		
-		while (!direction.equals("c") || !direction.equals("c")){
+		while (!direction.equals("c") || !direction.equals("cc")){
 			System.out.println("Invalid entry.  Which direction would you like to turn the dial?\n" 
 						+ "(clockwise/counterclockwise) => (c/cc)");
 			direction = scan.nextLine();
