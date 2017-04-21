@@ -17,7 +17,7 @@ public class Server {
     private int x, y, z;                           // pass code for lock
     private boolean xx, yy, zz;                    // track if inputted passcode matches x, y, and z 
     private int currentPos = 0;                    // current position of dial 
-    private int status = 0;                        // checks lock's open/close status
+    private boolean openStatus = false;                        // checks lock's open/close status
     Scanner scan = new Scanner(System.in);
     
     
@@ -43,7 +43,7 @@ public class Server {
         }
     
     /**
-     * creates a default combination lock with passcode 0,0,0
+     * creates a combination lock and prompts user to set passcode
      */
     public Server(){
     	System.out.println("Please set your Lock combination.  Enter 3 numbers, separated by spaces: ");
@@ -97,7 +97,7 @@ public class Server {
      */
     public boolean isOpen(){
         System.out.println("You check the lock to see if it's already open, ");
-        if (status == 1){
+        if (openStatus == true){
             System.out.println("\tand it is.\n");
             return true;
         } else {
@@ -157,7 +157,7 @@ public class Server {
     }
     
     /**
-     * firstTry method prompts user for input
+     * firstTry method that prompts user for input
      */
     public void firstTry(){
     	String direction;
@@ -265,13 +265,14 @@ public class Server {
     
     
     /**
-     * opens the lock
-     * if all pass codes are input correctly and lock is closed, lock opens
+     * opens the lock.
+     * if all pass codes are input correctly (direction, number of revolutions, and current pos)
+     *  and lock is currently closed, then lock opens
      */
     public void openLock(){
         System.out.println("You try to open the lock.");
         if (xx && yy && zz) {
-            status = 1;
+            openStatus = true;
             System.out.println((char)27 + "[34m\tClick.  The lock opens.\n" + (char)27 + "[0m");
         }
         else System.out.println((char)27 + "[34m\tThe lock doesn't budge.\n" + (char)27 + "[0m");
@@ -281,8 +282,12 @@ public class Server {
      * closes lock, if lock is open
      */
     public void closeLock(){
-        if (status == 1){status = 0;}
-        System.out.println("You close the lock.");
+        if (openStatus == true){
+        	openStatus = false;
+        	System.out.println("You close the lock.");
+        }else {
+        	System.out.println("The lock is already closed...you can't close a closed lock.");
+        }   
     }
     
     

@@ -83,6 +83,7 @@ public class CombinationLock {
         //combo4.firstTry("clockwise", 120);
         //combo4.secondTry("counter", 120);
         //combo4.thirdTry("clockwise", 80);
+        System.out.println("Let's make a fourth Lock.");
         Server combo4 = new Server();
         combo4.firstTry();
         combo4.secondTry();
