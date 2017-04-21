@@ -162,6 +162,7 @@ public class Server {
     	System.out.println("Please enter the direction you would like to turn the dial.\n" 
     					+ "(clockwise/counterclockwise) => (c/cc)");
     	String direction = scan.nextLine();
+    	
     	while (!direction.equals("c") || !direction.equals("c")){
     		System.out.println("Invalid entry.  Which direction would you like to turn the dial?\n" 
     					+ "(clockwise/counterclockwise) => (c/cc)");
@@ -169,9 +170,14 @@ public class Server {
     	}
     	System.out.println("Please enter the number of ticks you want to spin the dial.");
     	int ticks = scan.nextInt();
+    	
     	if (direction == "c") {turnClockwise(ticks);}
-    	else if (direction == "cc") {turnCounter(ticks);}
-    	else ;
+    	else {turnCounter(ticks);}
+
+        if (fullRevolution(ticks) && currentPos == x){
+            xx = true;
+        } 
+        else xx = false;
     }
     
     
@@ -188,6 +194,30 @@ public class Server {
             yy = true;
         } 
         else yy = false;
+    }
+    /**
+     * secondTry method that prompts user for input
+     */
+    public void secondTry() {
+    	System.out.println("Please enter the direction you would like to turn the dial.\n" 
+				+ "(clockwise/counterclockwise) => (c/cc)");
+		String direction = scan.nextLine();
+		
+		while (!direction.equals("c") || !direction.equals("c")){
+			System.out.println("Invalid entry.  Which direction would you like to turn the dial?\n" 
+						+ "(clockwise/counterclockwise) => (c/cc)");
+			direction = scan.nextLine();
+		}
+		System.out.println("Please enter the number of ticks you want to spin the dial.");
+		int ticks = scan.nextInt();
+		
+		if (direction == "c") {turnClockwise(ticks);}
+		else {turnCounter(ticks);}
+		
+		if (fullRevolution(ticks) && currentPos == x){
+		    xx = true;
+		} 
+		else xx = false;
     }
     
     
