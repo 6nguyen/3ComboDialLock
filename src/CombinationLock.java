@@ -14,16 +14,18 @@ public class CombinationLock {
      */
     public static void main(String[] args) {
         // setting up first lock and checking current position
-        Server combo1 = new Server();
+        //Server combo1 = new Server(24, 5, 32);
+    	Server combo1 = new Server();
         combo1.pos0();
         combo1.getPos();
         
         // entering combination and then checking current position
         //combo1.firstTry("clockwise", 64);
-        combo1.firstTry();
         //combo1.secondTry("counter", 59);
+        //combo1.thirdTry("clockwise", 27);
+        combo1.firstTry();
         combo1.secondTry();
-        combo1.thirdTry("clockwise", 27);
+        combo1.thirdTry();
         combo1.pos0();
         combo1.getPos();
         
@@ -41,33 +43,50 @@ public class CombinationLock {
         
         // testing if lock will reopen after it has already been opened 
         // and closed
-        combo1.firstTry("clockwise", 64);
-        combo1.secondTry("counter", 59);
-        combo1.thirdTry("clockwise", 27);
+        //combo1.firstTry("clockwise", 64);
+        //combo1.secondTry("counter", 59);
+        //combo1.thirdTry("clockwise", 27);
+        combo1.firstTry();
+        combo1.secondTry();
+        combo1.thirdTry();
         combo1.openLock();
         
         // testing boundary values (where currentPos may be negative)
-        Server combo2 = new Server(20, 39, 0);
-        combo2.firstTry("clockwise", 60);
-        combo2.secondTry("counter", 61);
-        combo2.thirdTry("clockwise", 1);
+        //Server combo2 = new Server(20, 39, 0);
+        //combo2.firstTry("clockwise", 60);
+        //combo2.secondTry("counter", 61);
+        //combo2.thirdTry("clockwise", 1);
+        System.out.println("Let's make a second Lock.");
+        Server combo2 = new Server();
+        combo2.firstTry();
+        combo2.secondTry();
+        combo2.thirdTry();
         combo2.openLock();
         
         // testing boundary values (most number of dial turns possible that 
         // would open the lock
+        //Server combo3 = new Server(0, 0, 0);
+        //combo3.firstTry("clockwise", 80);
+        //combo3.secondTry("counter", 80);
+        //combo3.thirdTry("clockwise", 40);
+        System.out.println("Let's make a third Lock.");
         Server combo3 = new Server();
-        combo3.firstTry("clockwise", 80);
-        combo3.secondTry("counter", 80);
-        combo3.thirdTry("clockwise", 40);
+        combo3.firstTry();
+        combo3.secondTry();
+        combo3.thirdTry();
         combo3.openLock();
         
         // testing boundary values ( values that exceed two revolutions, 
         // thus would not open the lock, 
         // and may result in currentPos > 39 or currentPos < 0
+        //Server combo4 = new Server(0, 0, 0);
+        //combo4.firstTry("clockwise", 120);
+        //combo4.secondTry("counter", 120);
+        //combo4.thirdTry("clockwise", 80);
         Server combo4 = new Server();
-        combo4.firstTry("clockwise", 120);
-        combo4.secondTry("counter", 120);
-        combo4.thirdTry("clockwise", 80);
+        combo4.firstTry();
+        combo4.secondTry();
+        combo4.thirdTry();
         combo4.openLock();
     }
     

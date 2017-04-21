@@ -258,7 +258,7 @@ public class Server {
     	if (direction.equals("c")) {turnClockwise(ticks);}
     	else {turnCounter(ticks);}
     	
-        if (fullRevolution(ticks) && currentPos == y){zz = true;} 
+        if (currentPos == z){zz = true;} 
         else zz = false;
         System.out.println();
     }
